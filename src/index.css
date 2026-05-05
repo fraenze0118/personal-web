@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ── Raw color variables (toggled via data-theme) ── */
+:root {
+  --_bg-primary: #0a0a0f;
+  --_bg-secondary: #111118;
+  --_bg-card: #1a1a24;
+  --_border: #2a2a38;
+  --_text-primary: #e4e4ec;
+  --_text-secondary: #8888a0;
+  --_accent-cyan: #00e5ff;
+  --_accent-green: #00ff88;
+  --_accent-violet: #a78bfa;
+  --_accent-yellow: #ffd700;
+  --_grid-opacity: 0.3;
+  --_grid-color: rgba(42, 42, 56, var(--_grid-opacity));
+}
+
+[data-theme="light"] {
+  --_bg-primary: #f8f8fc;
+  --_bg-secondary: #eeeef4;
+  --_bg-card: #ffffff;
+  --_border: #d4d4dc;
+  --_text-primary: #1a1a2e;
+  --_text-secondary: #5a5a72;
+  --_accent-cyan: #0088aa;
+  --_accent-green: #007744;
+  --_accent-violet: #7c3aed;
+  --_accent-yellow: #b8860b;
+  --_grid-opacity: 0.15;
+  --_grid-color: rgba(100, 100, 120, var(--_grid-opacity));
+}
+
+/* ── Tailwind theme tokens referencing the variables ── */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-bg-primary: var(--_bg-primary);
+  --color-bg-secondary: var(--_bg-secondary);
+  --color-bg-card: var(--_bg-card);
+  --color-border: var(--_border);
+  --color-text-primary: var(--_text-primary);
+  --color-text-secondary: var(--_text-secondary);
+  --color-accent-cyan: var(--_accent-cyan);
+  --color-accent-green: var(--_accent-green);
+  --color-accent-violet: var(--_accent-violet);
+  --color-accent-yellow: var(--_accent-yellow);
+}
+
+body {
+  margin: 0;
+  background-color: var(--_bg-primary);
+  color: var(--_text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--_grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--_grid-color) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 30%, black 30%, transparent 70%);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+section[id] {
+  scroll-snap-align: start;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--_accent-cyan) 20%, transparent);
+  color: var(--_text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--_bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--_border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--_text-secondary);
+}
+
+/* ── Shared animations ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}

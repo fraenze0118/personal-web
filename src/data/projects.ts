@@ -83,8 +83,8 @@ export const projects: Project[] = [
     ],
     videoUrl: `${base}videos/pinball-demo.mp4`,
     images: [
-      `${base}images/pinball-01.jpg`,
-      `${base}images/pinball-02.jpg`
+      `${base}images/pinball-01.webp`,
+      `${base}images/pinball-02.webp`
     ],
     techs: ["Arduino", "SolidWorks", "C++", "Python"],
     github: "https://github.com",

@@ -1,5 +1,7 @@
 import type { Project } from "../types";
 
+const base = import.meta.env.BASE_URL;
+
 export const projects: Project[] = [
   {
     title: {
@@ -40,7 +42,7 @@ export const projects: Project[] = [
         en: "Electron app — cross-platform desktop experience",
       },
     ],
-    videoUrl: "/videos/amadeus-demo.mp4",
+    videoUrl: `${base}videos/amadeus-demo.mp4`,
     techs: ["Electron", "TypeScript", "React", "Three.js", "Node.js", "Python", "PostgreSQL"],
     github: "https://github.com",
   },
@@ -79,10 +81,10 @@ export const projects: Project[] = [
         en: "Circuit design — sensor, servo, and LED matrix wiring",
       },
     ],
-    videoUrl: "/videos/pinball-demo.mp4",
+    videoUrl: `${base}videos/pinball-demo.mp4`,
     images: [
-      "/images/pinball-01.jpg",
-      "/images/pinball-02.jpg"
+      `${base}images/pinball-01.jpg`,
+      `${base}images/pinball-02.jpg`
     ],
     techs: ["Arduino", "SolidWorks", "C++", "Python"],
     github: "https://github.com",

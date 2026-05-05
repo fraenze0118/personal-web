@@ -64,9 +64,9 @@ export default function Navigation({ activeSection }: NavigationProps) {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-mono text-sm text-text-secondary hover:text-accent-cyan transition-colors no-underline"
+                className="font-mono text-xs text-text-secondary hover:text-accent-cyan transition-colors no-underline"
               >
-                {item.label.slice(0, 2)}
+                {item.label}
               </a>
             ))}
           </div>

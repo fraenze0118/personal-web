@@ -119,7 +119,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-start justify-center p-4 pt-20 pb-8 overflow-y-auto"
+      className="fixed inset-0 z-[60] flex items-start justify-center p-4 pt-16 sm:pt-20 pb-8 overflow-y-auto"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -128,8 +128,8 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
       <div className="relative w-full max-w-2xl rounded-2xl border border-border bg-bg-card shadow-2xl">
         {/* Header */}
-        <div className="flex items-start justify-between p-6 pb-2">
-          <h2 className="font-sans text-2xl font-bold text-text-primary">
+        <div className="flex items-start justify-between p-4 sm:p-6 pb-2">
+          <h2 className="font-sans text-xl sm:text-2xl font-bold text-text-primary">
             {loc(project.title)}
           </h2>
           <button
@@ -144,7 +144,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           </button>
         </div>
 
-        <div className="px-6 pb-6">
+        <div className="px-4 sm:px-6 pb-6">
           {/* Images (carousel) */}
           {project.images && project.images.length > 0 && (
             <ImageCarousel images={project.images} />

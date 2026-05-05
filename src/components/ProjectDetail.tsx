@@ -53,6 +53,7 @@ function ImageCarousel({ images }: { images: string[] }) {
         <img
           src={images[idx]}
           alt={`Image ${idx + 1}`}
+          loading="lazy"
           className="w-full aspect-video object-cover"
         />
 
@@ -156,6 +157,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
               <video
                 src={project.videoUrl}
                 controls
+                preload="none"
                 className="w-full aspect-video bg-black"
               >
                 Your browser does not support the video tag.

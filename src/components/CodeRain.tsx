@@ -2,9 +2,10 @@ import { useEffect, useRef } from "react";
 
 const CHARS = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789{}[]()<>/\\*+-=;:.,";
 
-const FONT_SIZE = 14;
-const SPEED_RANGE = [0.3, 1.2];   // px per frame
-const TAIL_LENGTH = 18;            // chars per trail
+const FONT_SIZE = 20;
+const SPEED_RANGE = [0.05, 0.2];   // px per frame
+const TAIL_LENGTH = 8;            // chars per trail
+const DENSITY = 0.1;             // fraction of columns active
 
 export default function CodeRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -19,6 +20,7 @@ export default function CodeRain() {
     let w = 0, h = 0, cols = 0;
     let drops: number[] = [];
     let speeds: number[] = [];
+    let active: boolean[] = [];
 
     const resize = () => {
       w = window.innerWidth;
@@ -26,6 +28,7 @@ export default function CodeRain() {
       canvas.width = w;
       canvas.height = h;
       cols = Math.floor(w / FONT_SIZE);
+      active = new Array(cols).fill(false).map(() => Math.random() < DENSITY);
       drops = new Array(cols).fill(0).map(() => Math.random() * -100);
       speeds = new Array(cols).fill(0).map(() =>
         SPEED_RANGE[0] + Math.random() * (SPEED_RANGE[1] - SPEED_RANGE[0])
@@ -45,6 +48,8 @@ export default function CodeRain() {
       ctx.font = `${FONT_SIZE}px "JetBrains Mono", monospace`;
 
       for (let i = 0; i < cols; i++) {
+        if (!active[i]) continue;
+
         const x = i * FONT_SIZE;
         const y = drops[i] * FONT_SIZE;
 
@@ -56,16 +61,16 @@ export default function CodeRain() {
           const char = CHARS[Math.floor(Math.random() * CHARS.length)];
 
           if (j === 0) {
-            // Head — bright white/cyan
-            ctx.fillStyle = "rgba(200, 255, 255, 0.9)";
-          } else if (j < 3) {
+            // Head — soft white
+            ctx.fillStyle = "rgba(200, 255, 255, 0.5)";
+          } else if (j < 2) {
             // Leading edge — cyan
             const a = 1 - j / TAIL_LENGTH;
-            ctx.fillStyle = `rgba(0, 229, 255, ${(a * 0.6).toFixed(2)})`;
+            ctx.fillStyle = `rgba(0, 229, 255, ${(a * 0.3).toFixed(2)})`;
           } else {
             // Tail — green fading to dark
             const a = 1 - j / TAIL_LENGTH;
-            ctx.fillStyle = `rgba(0, 255, 136, ${(a * 0.3).toFixed(2)})`;
+            ctx.fillStyle = `rgba(0, 255, 136, ${(a * 0.15).toFixed(2)})`;
           }
 
           ctx.fillText(char, x, cy);

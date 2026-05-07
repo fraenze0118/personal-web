@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BootScreen from "./components/BootScreen";
 import CursorGlow from "./components/CursorGlow";
+import CodeRain from "./components/CodeRain";
 import ScrollProgress from "./components/ScrollProgress";
 import { useScrollSpy } from "./hooks/useScrollSpy";
 
@@ -31,6 +32,7 @@ function App() {
   return (
     <>
       <CursorGlow />
+      <CodeRain />
       <ScrollProgress />
       <Navigation activeSection={activeSection} />
       <main>

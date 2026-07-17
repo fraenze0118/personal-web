@@ -23,6 +23,12 @@ const techColors: Record<string, string> = {
   Arduino: "text-accent-green",
   SolidWorks: "text-accent-cyan",
   "C++": "text-accent-yellow",
+  "Next.js": "text-accent-cyan",
+  "React Flow": "text-accent-violet",
+  KaTeX: "text-accent-green",
+  "ESP32-S3": "text-accent-green",
+  FreeCAD: "text-accent-violet",
+  "立创EDA": "text-accent-yellow",
 };
 
 interface ProjectDetailProps {

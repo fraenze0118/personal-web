@@ -4,11 +4,11 @@ export const profile: Profile = {
   name: "杨奕晨",
   nameEn: "Yichen Yang",
   role: {
-    zh: "开发工程师",
-    en: "Software Engineer",
+    zh: "全栈开发工程师",
+    en: "Full-Stack Engineer",
   },
   bio: {
-    zh: "开发工程师，擅长 Java 生态与分布式系统设计，同时也具备从Web前端（Vue/React）到嵌入式系统（RTOS）的跨领域工程能力。拥有电子工程学术背景，享受用技术解决复杂问题的过程。",
-    en: "Development engineer, skilled in the Java ecosystem and distributed system design, while also possessing cross-domain engineering capabilities from web front-end (Vue/React) to embedded systems (RTOS). With an academic background in electronic engineering, enjoys the process of solving complex problems with technology.",
+    zh: "全栈开发工程师，专注 Java 生态与分布式系统设计，同时具备从 Web 前端（React/Next.js/Vue）到嵌入式硬件（ESP32/PCB 设计/3D CAD）的跨领域工程能力。拥有电子工程学术背景，热衷于从零构建完整产品——从电路原理图到桌面应用，享受打通软硬件边界的创造过程。",
+    en: "Full-stack engineer focused on the Java ecosystem and distributed system design, with cross-domain engineering capabilities spanning web front-end (React/Next.js/Vue) to embedded hardware (ESP32/PCB design/3D CAD). With an academic background in electronic engineering, passionate about building complete products from scratch — from circuit schematics to desktop applications — enjoying the creative process of bridging software and hardware.",
   },
 };

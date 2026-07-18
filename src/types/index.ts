@@ -12,7 +12,7 @@ export interface Profile {
 
 export interface Skill {
   name: string;
-  category: "frontend" | "backend" | "tools" | "other";
+  category: "frontend" | "backend" | "embedded" | "tools" | "other";
 }
 
 export interface Project {

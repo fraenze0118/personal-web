@@ -46,49 +46,6 @@ export const projects: Project[] = [
     techs: ["Electron", "TypeScript", "React", "Three.js", "Node.js", "Python", "PostgreSQL"],
     github: "https://github.com",
   },
-  {
-    title: {
-      zh: "弹球机",
-      en: "Pinball Machine",
-    },
-    description: {
-      zh: "自制弹球机，SolidWorks 机械设计 + 3D 打印 + 激光切割 + Arduino 嵌入式控制。",
-      en: "DIY pinball machine with SolidWorks mechanical design, 3D printing, laser cutting, and Arduino embedded control.",
-    },
-    detail: {
-      zh: "从零设计并制作的一台完整弹球机。使用 SolidWorks 完成全部机械结构设计，通过 3D 打印制作弹射器、挡板等关键部件，激光切割亚克力面板作为球场底板。控制部分基于 Arduino 编写嵌入式程序，实现分数计数、音效反馈、LED 灯光控制等功能，完整展现了软硬件结合的系统工程能力。",
-      en: "A complete pinball machine designed and built from scratch. All mechanical structures designed in SolidWorks, key components (launcher, flippers) 3D-printed, and playfield panels laser-cut from acrylic. The control system runs on Arduino with custom embedded firmware handling score tracking, sound effects, and LED lighting — demonstrating full-spectrum software-hardware integration skills.",
-    },
-    features: [
-      {
-        zh: "SolidWorks 机械设计 — 完整的 3D 模型与工程图纸",
-        en: "SolidWorks design — complete 3D model and engineering drawings",
-      },
-      {
-        zh: "3D 打印 — 弹射器、挡板等关键部件 FDM 打印",
-        en: "3D printing — FDM-printed launcher, flippers, and key components",
-      },
-      {
-        zh: "激光切割 — 亚克力面板精密加工",
-        en: "Laser cutting — precision acrylic playfield fabrication",
-      },
-      {
-        zh: "Arduino 控制 — 嵌入式程序实现分数、音效、灯光",
-        en: "Arduino control — embedded firmware for scoring, sound, and LED lighting",
-      },
-      {
-        zh: "电路设计 — 传感器、舵机、LED 矩阵布线",
-        en: "Circuit design — sensor, servo, and LED matrix wiring",
-      },
-    ],
-    videoUrl: `${base}videos/pinball-demo.mp4`,
-    images: [
-      `${base}images/pinball-01.webp`,
-      `${base}images/pinball-02.webp`
-    ],
-    techs: ["Arduino", "SolidWorks", "C++", "Python"],
-    github: "https://github.com",
-  },
   // {
   //   title: {
   //     zh: "证券交易系统",
@@ -214,5 +171,48 @@ export const projects: Project[] = [
     ],
     techs: ["ESP32-S3", "Arduino", "C++", "Python", "FreeCAD", "立创EDA", "Electron", "Vue"],
     github: "https://github.com/fraenze0118/yiy-workstation",
+  },
+    {
+    title: {
+      zh: "弹球机",
+      en: "Pinball Machine",
+    },
+    description: {
+      zh: "自制弹球机，SolidWorks 机械设计 + 3D 打印 + 激光切割 + Arduino 嵌入式控制。",
+      en: "DIY pinball machine with SolidWorks mechanical design, 3D printing, laser cutting, and Arduino embedded control.",
+    },
+    detail: {
+      zh: "从零设计并制作的一台完整弹球机。使用 SolidWorks 完成全部机械结构设计，通过 3D 打印制作弹射器、挡板等关键部件，激光切割亚克力面板作为球场底板。控制部分基于 Arduino 编写嵌入式程序，实现分数计数、音效反馈、LED 灯光控制等功能，完整展现了软硬件结合的系统工程能力。",
+      en: "A complete pinball machine designed and built from scratch. All mechanical structures designed in SolidWorks, key components (launcher, flippers) 3D-printed, and playfield panels laser-cut from acrylic. The control system runs on Arduino with custom embedded firmware handling score tracking, sound effects, and LED lighting — demonstrating full-spectrum software-hardware integration skills.",
+    },
+    features: [
+      {
+        zh: "SolidWorks 机械设计 — 完整的 3D 模型与工程图纸",
+        en: "SolidWorks design — complete 3D model and engineering drawings",
+      },
+      {
+        zh: "3D 打印 — 弹射器、挡板等关键部件 FDM 打印",
+        en: "3D printing — FDM-printed launcher, flippers, and key components",
+      },
+      {
+        zh: "激光切割 — 亚克力面板精密加工",
+        en: "Laser cutting — precision acrylic playfield fabrication",
+      },
+      {
+        zh: "Arduino 控制 — 嵌入式程序实现分数、音效、灯光",
+        en: "Arduino control — embedded firmware for scoring, sound, and LED lighting",
+      },
+      {
+        zh: "电路设计 — 传感器、舵机、LED 矩阵布线",
+        en: "Circuit design — sensor, servo, and LED matrix wiring",
+      },
+    ],
+    videoUrl: `${base}videos/pinball-demo.mp4`,
+    images: [
+      `${base}images/pinball-01.webp`,
+      `${base}images/pinball-02.webp`
+    ],
+    techs: ["Arduino", "SolidWorks", "C++", "Python"],
+    github: "https://github.com",
   },
 ];

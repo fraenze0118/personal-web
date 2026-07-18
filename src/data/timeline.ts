@@ -16,8 +16,8 @@ export const timeline: TimelineItem[] = [
   {
     period: "2023.09 ~ 2025.06",
     title: {
-      zh: "电子工程 硕士",
-      en: "M.S. in Electrical Engineering",
+      zh: "电子与计算机工程 硕士",
+      en: "M.S. in Electrical and Computer Engineering",
     },
     subtitle: {
       zh: "加州大学洛杉矶分校 (UCLA)",

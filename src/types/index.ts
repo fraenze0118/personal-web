@@ -22,6 +22,7 @@ export interface Project {
   features?: LocaleText[];
   videoUrl?: string;
   images?: string[];
+  thumbnail?: string;
   techs: string[];
   link?: string;
   github?: string;

@@ -8,6 +8,7 @@ export const projects: Project[] = [
       zh: "Amadeus",
       en: "Amadeus",
     },
+    thumbnail:  "/images/amadeus-01.jpg",
     description: {
       zh: "桌面 AI 伙伴应用，使用 Live2D + 3D 角色实现二次元角色展示与自然交互。",
       en: "Desktop AI companion app featuring Live2D + 3D avatar with natural interaction.",
@@ -93,6 +94,7 @@ export const projects: Project[] = [
       zh: "Yiy-Note",
       en: "Yiy-Note",
     },
+    thumbnail:"/images/yiy-note-02.png",
     description: {
       zh: "本地优先的个人知识管理系统，支持思维导图式知识图谱、Markdown 编辑与全文检索。",
       en: "Local-first personal knowledge management system with mind-map knowledge graph, Markdown editing, and full-text search.",
@@ -127,6 +129,11 @@ export const projects: Project[] = [
         en: "Electron desktop — frameless window with macOS-style traffic light controls",
       },
     ],
+    images: [
+      `${base}images/yiy-note-01.png`,
+      `${base}images/yiy-note-02.png`,
+      `${base}images/yiy-note-03.png`,
+    ],
     techs: ["Next.js", "TypeScript", "React", "Tailwind CSS", "React Flow", "Electron", "KaTeX"],
     github: "https://github.com/fraenze0118/yiy-note",
   },
@@ -135,6 +142,7 @@ export const projects: Project[] = [
       zh: "Yiy-Workstation",
       en: "Yiy-Workstation",
     },
+    thumbnail:"/images/yiy-workstation-01.jpg",
     description: {
       zh: "ESP32-S3 驱动的可编程桌面外设，TFT 屏+机械按键+编码器+麦克风，Python SDK 开发应用。",
       en: "ESP32-S3 powered programmable desktop peripheral with TFT screen, mechanical keys, encoder, and mic — app development via Python SDK.",
@@ -169,14 +177,21 @@ export const projects: Project[] = [
         en: "Custom protocol — hybrid text command + binary streaming with chunk-level ACK flow control",
       },
     ],
+    images: [
+      `${base}images/yiy-workstation-02.jpg`,
+      `${base}images/yiy-workstation-03.jpg`,
+      `${base}images/yiy-workstation-04.jpg`,
+      `${base}images/yiy-workstation-05.jpg`
+    ],
     techs: ["ESP32-S3", "Arduino", "C++", "Python", "FreeCAD", "立创EDA", "Electron", "Vue"],
     github: "https://github.com/fraenze0118/yiy-workstation",
   },
-    {
+  {
     title: {
       zh: "弹球机",
       en: "Pinball Machine",
     },
+    thumbnail:"/images/pinball-01.webp",
     description: {
       zh: "自制弹球机，SolidWorks 机械设计 + 3D 打印 + 激光切割 + Arduino 嵌入式控制。",
       en: "DIY pinball machine with SolidWorks mechanical design, 3D printing, laser cutting, and Arduino embedded control.",

@@ -1,35 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Project } from "../types";
 import { useLanguage } from "../contexts/LanguageContext";
-
-const techColors: Record<string, string> = {
-  Java: "text-accent-green",
-  "Spring Boot": "text-accent-green",
-  MySQL: "text-accent-violet",
-  Kafka: "text-accent-yellow",
-  Redis: "text-accent-cyan",
-  Vue: "text-accent-cyan",
-  Electron: "text-accent-cyan",
-  TypeScript: "text-accent-cyan",
-  React: "text-accent-cyan",
-  "Three.js": "text-accent-violet",
-  "Node.js": "text-accent-green",
-  Python: "text-accent-yellow",
-  PostgreSQL: "text-accent-violet",
-  "Tailwind CSS": "text-accent-cyan",
-  Vite: "text-accent-yellow",
-  Docker: "text-accent-cyan",
-  AWS: "text-accent-violet",
-  Arduino: "text-accent-green",
-  SolidWorks: "text-accent-cyan",
-  "C++": "text-accent-yellow",
-  "Next.js": "text-accent-cyan",
-  "React Flow": "text-accent-violet",
-  KaTeX: "text-accent-green",
-  "ESP32-S3": "text-accent-green",
-  FreeCAD: "text-accent-violet",
-  "立创EDA": "text-accent-yellow",
-};
+import { techColors } from "../data/techColors";
 
 interface ProjectDetailProps {
   project: Project;

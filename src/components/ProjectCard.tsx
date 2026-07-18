@@ -1,31 +1,6 @@
-import { useState, useCallback } from "react";
 import type { Project } from "../types";
 import { useLanguage } from "../contexts/LanguageContext";
-
-const techColors: Record<string, string> = {
-  Java: "text-accent-green",
-  "Spring Boot": "text-accent-green",
-  MySQL: "text-accent-violet",
-  Kafka: "text-accent-yellow",
-  Redis: "text-accent-cyan",
-  Vue: "text-accent-cyan",
-  React: "text-accent-cyan",
-  TypeScript: "text-accent-cyan",
-  "Tailwind CSS": "text-accent-cyan",
-  Vite: "text-accent-yellow",
-  "Node.js": "text-accent-green",
-  PostgreSQL: "text-accent-violet",
-  Docker: "text-accent-cyan",
-  Python: "text-accent-yellow",
-  AWS: "text-accent-violet",
-  Electron: "text-accent-cyan",
-  "Three.js": "text-accent-violet",
-  Arduino: "text-accent-green",
-  SolidWorks: "text-accent-cyan",
-  "C++": "text-accent-yellow",
-};
-
-const MAX_TECHS = 5;
+import { techColors } from "../data/techColors";
 
 interface ProjectCardProps {
   project: Project;
@@ -34,100 +9,84 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const { loc } = useLanguage();
-  const visibleTechs = project.techs.slice(0, MAX_TECHS);
-  const remaining = project.techs.length - MAX_TECHS;
   const hasDetail = !!(project.detail || project.features || project.videoUrl);
-
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
-  const [glow, setGlow] = useState({ x: 50, y: 50 });
-
-  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = x / rect.width;
-    const cy = y / rect.height;
-
-    setTilt({ rx: (cy - 0.5) * -12, ry: (cx - 0.5) * 12 });
-    setGlow({ x: cx * 100, y: cy * 100 });
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    setTilt({ rx: 0, ry: 0 });
-    setGlow({ x: 50, y: 50 });
-  }, []);
 
   return (
     <div
       onClick={onClick}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      className={`group relative rounded-xl border border-border bg-bg-card p-6 transition-[border-color,box-shadow] duration-300 hover:border-accent-cyan/30 hover:shadow-lg ${hasDetail ? "cursor-pointer" : ""}`}
-      style={{
-        transform:
-          `perspective(800px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
-        boxShadow: tilt.rx !== 0 || tilt.ry !== 0
-          ? `0 0 30px rgba(0,229,255,0.08), 0 20px 40px rgba(0,0,0,0.2)`
-          : undefined,
-      }}
+      className={`group relative flex rounded-xl border border-border bg-bg-card overflow-hidden transition-all duration-300 hover:border-accent-cyan/30 hover:shadow-lg hover:-translate-y-0.5 ${
+        hasDetail ? "cursor-pointer" : ""
+      }`}
     >
-      {/* Glow overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(300px at ${glow.x}% ${glow.y}%, rgba(0,229,255,0.08) 0%, transparent 60%)`,
-        }}
-      />
+      {/* Left accent bar */}
+      <div className="w-1 shrink-0 bg-gradient-to-b from-accent-cyan via-accent-cyan/60 to-accent-green/30 transition-all duration-300 group-hover:from-accent-cyan group-hover:via-accent-cyan/80 group-hover:to-accent-green/60" />
 
-      <div className="relative z-[1]">
-        <h3 className="mb-3 font-sans text-xl font-semibold text-text-primary">
-          {loc(project.title)}
-        </h3>
-        <p className="mb-5 text-sm leading-relaxed text-text-secondary">
+      {/* Thumbnail (optional) */}
+      {project.thumbnail && (
+        <div className="w-36 sm:w-48 shrink-0 border-r border-border overflow-hidden bg-bg-secondary">
+          <img
+            src={project.thumbnail}
+            alt={loc(project.title)}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      )}
+
+      <div className="flex-1 p-5 sm:p-6 min-w-0">
+        {/* Top row: title + source link */}
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h3 className="font-sans text-lg sm:text-xl font-semibold text-text-primary transition-colors duration-200 group-hover:text-accent-cyan">
+            {loc(project.title)}
+          </h3>
+
+          <div className="flex items-center gap-3 shrink-0 pt-0.5">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="font-mono text-xs text-text-secondary no-underline transition-colors hover:text-accent-cyan"
+              >
+                &lt;/&gt;
+              </a>
+            )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="font-mono text-xs text-accent-cyan no-underline transition-colors hover:underline"
+              >
+                visit &rarr;
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="mb-4 text-sm leading-relaxed text-text-secondary max-w-prose">
           {loc(project.description)}
         </p>
 
-        <div className="mb-5 flex flex-wrap gap-1.5">
-          {visibleTechs.map((tech) => (
-            <span
-              key={tech}
-              className={`inline-block rounded bg-bg-secondary px-2 py-0.5 font-mono text-xs ${techColors[tech] ?? "text-text-secondary"}`}
-            >
-              {tech}
-            </span>
-          ))}
-          {remaining > 0 && (
-            <span className="inline-block rounded bg-bg-secondary px-2 py-0.5 font-mono text-xs text-text-secondary/60">
-              +{remaining}
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-4">
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="font-mono text-xs text-accent-cyan no-underline hover:underline"
-            >
-              visit &rarr;
-            </a>
-          )}
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="font-mono text-xs text-text-secondary no-underline hover:text-text-primary transition-colors"
-            >
-              &lt;/&gt; source
-            </a>
-          )}
+        {/* Bottom row: techs + detail link */}
+        <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-wrap gap-1.5 flex-1 min-w-0">
+            {project.techs.map((tech) => (
+              <span
+                key={tech}
+                className={`inline-block rounded bg-bg-secondary px-2 py-0.5 font-mono text-xs whitespace-nowrap ${
+                  techColors[tech] ?? "text-text-secondary"
+                }`}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
           {hasDetail && (
-            <span className="ml-auto font-mono text-xs text-accent-violet/60 group-hover:text-accent-violet transition-colors">
+            <span className="shrink-0 font-mono text-xs text-accent-violet/60 transition-colors duration-200 group-hover:text-accent-violet whitespace-nowrap">
               view details &rarr;
             </span>
           )}
